@@ -1,0 +1,123 @@
+:root {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    --screen-bg: #615c5c;
+    --operator-bg-top: #615c5c;
+    --operator-bg-side: #ff9500;
+    --operand-bg: #8a8a8a;
+    --light-border: 1px solid #ffffff38;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+    color: white !important;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-container {
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.541);
+    border: 1px solid rgba(0, 0, 0, 0.411);
+}
+
+.display {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    max-width: 233px;
+    min-width: 150px;
+    background-color: var(--screen-bg);
+    overflow-y: scroll;
+    font-weight: lighter;
+    border: var(--light-border);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+}
+
+.current-num {
+    max-width: 40ch;
+    word-break: break-all;
+    overflow-y: visible;
+    margin: 20px 10px 5px 10px;
+    font-size: 2.8rem;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 233px;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.calc-buttons > button {
+    font-size: 1.13rem;
+    padding: .8rem;
+}
+
+.calc-buttons > button:active {
+    background-color: rgb(190, 190, 190);
+}
+
+.operands, .top-operators, .side-operators {
+    border: .9px solid rgba(0, 0, 0, 0.388);
+}
+
+.calc-buttons > button:nth-child(-n + 4) {
+    border-top: 1px solid rgba(0, 0, 0, 0.222);
+}
+
+.calc-buttons > button:nth-child(-n + 4):active {
+    background-color: var(--operand-bg);
+}
+
+.calc-buttons > button:nth-child(4n + 1) {
+    border-left: var(--light-border);
+}
+
+.calc-buttons > button:nth-child(4n + 4) {
+    border-right: var(--light-border);
+}
+
+.calc-buttons > button:nth-child(4n + 4):active {
+    background-color: hsla(0, 50%, 0%, 0.602);
+}
+
+.calc-buttons > button:nth-child(n + 17) {
+    border-bottom: var(--light-border);
+}
+
+.calc-buttons > button:nth-child(17) {
+    border-radius: 0 0 0 11px;
+}
+
+.calc-buttons > button:nth-child(19) {
+    border-radius: 0 0 10px 0;
+    border-right: var(--light-border);
+}
+
+.calc-buttons > button:nth-child(19):active {
+    background-color: hsla(0, 50%, 0%, 0.602);
+}
+
+.top-operators {
+    background-color: var(--operator-bg-top);
+}
+
+.side-operators {
+    background-color: var(--operator-bg-side);
+}
+
+.operands {
+    background-color: var(--operand-bg);
+}
+
+.zero {
+    grid-column: span 2 ;
+}
