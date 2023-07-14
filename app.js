@@ -7,11 +7,11 @@ let isFirstNum;
 
 class Calculator {
     prevNum = '';
-    sum;
 
     constructor(currentNum) {
         this.currentNum = currentNum;
         this.clearScreen();
+        console.log(this)
     }
 
     simpleNumMethods(operation) {
@@ -26,49 +26,25 @@ class Calculator {
                 break;
 
             case 'percentage':
-                this.currentNum.innerText = this.currentNum.innerText / 100;
+                this.currentNum = this.currentNum.innerText / 100;
                 break;
         }
     }
 
     chooseOperation(operation) {
-        if (this.currentNum.innerText === '0') return;
-        if (this.prevNum !== '') {this.compute(operation)};
         isFirstNum = true;
         this.prevNum = this.currentNum.innerText;
-        console.log(this)
+        console.log(this, operation);
+        this.currentNum
     }
     
     compute(operation) {
-        this.currentNum.innerText = parseFloat(this.currentNum.innerText);
-        let pre = parseFloat(this.prevNum);
-        let curr = parseFloat(this.currentNum.innerText);
 
-        switch (operation) {
-            case 'divide':
-                this.sum = pre / curr;
-                break;
-            case 'multiply':
-                this.sum = pre * curr;
-                break;
-            case 'minus':
-                this.sum = pre - curr;
-                break;
-            case 'addition':
-                this.sum = pre + curr;
-                break;
-            default: return; 
-        }
-        this.currentNum.innerText = this.sum;
-        operation = undefined;
-        this.prevNum = '';
     }
 
     clearScreen() {
         this.currentNum.innerText = '0';
         allClear.textContent = 'AC';
-        this.sum = undefined;
-        this.prevNum = '';
         isFirstNum = true;
     }
 
@@ -76,6 +52,7 @@ class Calculator {
         if (this.currentNum.innerText.includes('.') && inputtedNum === '.') return;
         if (isFirstNum && inputtedNum != '.') { this.currentNum.innerText = inputtedNum; }
         else {this.currentNum.innerText += inputtedNum; };
+        console.log(this);
     }
 }
 
